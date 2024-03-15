@@ -7,8 +7,12 @@
     "author": "Gavant Software, Inc.",
     "type": "module",
     "scripts": {
-        "dev": "yarn workspace app dev",
-        "build": "yarn workspace app build"
+        "dev": "yarn workspace lib dev",
+        "build": "yarn workspace lib build",
+        "lint": "yarn workspace lib lint",
+        "preview": "yarn workspace lib preview",
+        "storybook": "yarn workspace lib storybook",
+        "build-storybook": "yarn workspace lib build-storybook"
     },
     "devDependencies": {
         "prettier": "3.0.2"
