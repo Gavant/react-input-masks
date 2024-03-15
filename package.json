@@ -6,6 +6,7 @@
     "license": "MIT",
     "author": "Gavant Software, Inc.",
     "type": "module",
+    "main": "src/index.ts",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
@@ -15,11 +16,17 @@
         "build-storybook": "storybook build"
     },
     "dependencies": {
+        "react-number-format": "^5.3.3"
+    },
+    "peerDependencies": {
+        "@mui/material": "^5.15.11",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.2.20",
+        "@mui/material": "^5.15.11",
+        "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
         "@storybook/addon-essentials": "^8.0.0",
         "@storybook/addon-interactions": "^8.0.0",
         "@storybook/addon-links": "^8.0.0",
@@ -33,14 +40,21 @@
         "@typescript-eslint/eslint-plugin": "^6.14.0",
         "@typescript-eslint/parser": "^6.14.0",
         "@vitejs/plugin-react": "^4.2.1",
+        "babel-plugin-styled-components": "^2.1.4",
         "eslint": "^8.55.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.5",
         "eslint-plugin-storybook": "^0.8.0",
         "prettier": "3.0.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "storybook": "^8.0.0",
+        "styled-components": "^6.1.8",
         "typescript": "^5.2.2",
         "vite": "^5.0.8"
+    },
+    "resolutions": {
+        "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
     },
     "volta": {
         "node": "18.16.0",
