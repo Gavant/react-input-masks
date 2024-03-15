@@ -31,5 +31,5 @@ jobs:
               with:
                   install_command: yarn install
                   build_command: yarn build-storybook
-                  path: lib/storybook-static
+                  path: storybook-static
                   checkout: false
