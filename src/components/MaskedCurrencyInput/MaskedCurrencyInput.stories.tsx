@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { Controller } from 'react-hook-form';
 
 import MaskedCurrencyInput from './MaskedCurrencyInput';
+import { ReactHookFormDemo } from '../../utils/storybook';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -33,9 +35,27 @@ export const Basic: Story = {
     },
 };
 
-// TODO Story for integration w/react-hook-form and <Controller>
 export const ReactHookForm: Story = {
     args: {
         label: 'Dollar Amount',
     },
+    parameters: {
+        docs: {
+            source: {
+                type: 'code',
+            },
+        },
+    },
+    render: ({ ...rest }) => (
+        <ReactHookFormDemo>
+            {({ control, errors }) => (
+                <Controller
+                    control={control}
+                    name="currencyRtl"
+                    render={({ field }) => <MaskedCurrencyInput error={!!errors.currencyRtl} {...rest} {...field} />}
+                    rules={{ required: true }}
+                />
+            )}
+        </ReactHookFormDemo>
+    ),
 };
