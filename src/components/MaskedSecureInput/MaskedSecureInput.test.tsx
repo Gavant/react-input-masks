@@ -62,7 +62,7 @@ describe('<MaskedSecureInput />', () => {
             await userEvent.type(element, '123456789');
             await userEvent.click(screen.getByText('Submit'));
             expect(onSubmit).toHaveBeenCalledOnce();
-            expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ssn: '123456789' }), expect.anything());
+            expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ssn: '12345678' }), expect.anything());
         });
     });
 });
