@@ -2,15 +2,36 @@
 
 Input mask components for React.js applications.
 
+```
+yarn add @gavant/react-input-masks
+```
+
 **Docs: [https://gavant.github.io/react-input-masks](https://gavant.github.io/react-input-masks)**
 
 ## Requirements
 
-TODO - basic info on app environment requirements
+**Required peer dependencies:**
+
+-   MUI Core ^5.15.11+
+-   React ^18.2.0+
+-   React DOM ^18.2.0+
 
 ## Contributing
 
-TODO - how to develop, test, and build the app
+Requires Node.js 18.16.0+ and Yarn 4.0.0+.
+
+To start developing:
+
+```
+yarn install
+yarn storybook
+```
+
+To run tests:
+
+```
+yarn test
+```
 
 ## React + TypeScript + Vite
 
