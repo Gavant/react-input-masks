@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { Controller } from 'react-hook-form';
 
 import MaskedPatternInput from './MaskedPatternInput';
+import { ReactHookFormDemo } from '../../utils/storybook';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -34,10 +36,28 @@ export const Basic: Story = {
     },
 };
 
-// TODO Story for integration w/react-hook-form and <Controller>
 export const ReactHookForm: Story = {
     args: {
         label: 'Postal Code',
         format: '#####-####',
     },
+    parameters: {
+        docs: {
+            source: {
+                type: 'code',
+            },
+        },
+    },
+    render: ({ ...rest }) => (
+        <ReactHookFormDemo>
+            {({ control, errors }) => (
+                <Controller
+                    control={control}
+                    name="zip"
+                    render={({ field }) => <MaskedPatternInput error={!!errors.zip} {...rest} {...field} />}
+                    rules={{ required: true }}
+                />
+            )}
+        </ReactHookFormDemo>
+    ),
 };

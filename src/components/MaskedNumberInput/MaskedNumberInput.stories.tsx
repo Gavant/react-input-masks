@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
+import { Controller } from 'react-hook-form';
 
 import MaskedNumberInput from './MaskedNumberInput';
+import { ReactHookFormDemo } from '../../utils/storybook';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -33,9 +35,27 @@ export const Basic: Story = {
     },
 };
 
-// TODO Story for integration w/react-hook-form and <Controller>
 export const ReactHookForm: Story = {
     args: {
         label: 'Basic Number',
     },
+    parameters: {
+        docs: {
+            source: {
+                type: 'code',
+            },
+        },
+    },
+    render: ({ ...rest }) => (
+        <ReactHookFormDemo>
+            {({ control, errors }) => (
+                <Controller
+                    control={control}
+                    name="basic"
+                    render={({ field }) => <MaskedNumberInput error={!!errors.basic} {...rest} {...field} />}
+                    rules={{ required: true }}
+                />
+            )}
+        </ReactHookFormDemo>
+    ),
 };
