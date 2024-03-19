@@ -44,7 +44,16 @@ describe('<MaskedCurrencyInputRTL />', () => {
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ target: expect.objectContaining({ value: '12345.67' }) }));
     });
 
-    it.todo('should enter numbers from right to left');
+    it('should enter numbers from right to left', async () => {
+        render(<MaskedCurrencyInputRTL label="Label" />);
+        const element = screen.getByLabelText('Label');
+        await userEvent.type(element, '9');
+        expect(element).toHaveValue('$0.09');
+        await userEvent.type(element, '9');
+        expect(element).toHaveValue('$0.99');
+        await userEvent.type(element, '9');
+        expect(element).toHaveValue('$9.99');
+    });
 
     describe('react-hook-form', () => {
         function TestForm({ onSubmit }: { onSubmit: SubmitHandler<{ amount: string }> }) {
