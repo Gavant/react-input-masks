@@ -39,7 +39,7 @@ describe('<MaskedExpirationInput />', () => {
         render(<MaskedExpirationInput label="Label" onChange={onChange} />);
         const element = screen.getByLabelText('Label');
         await userEvent.type(element, '0324');
-        expect(element).toHaveValue('0324');
+        expect(element).toHaveValue('03/24');
         expect(onChange).toHaveBeenCalled();
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ target: expect.objectContaining({ value: '03/24' }) }));
     });

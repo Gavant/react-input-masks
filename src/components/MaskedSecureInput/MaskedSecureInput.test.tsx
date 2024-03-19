@@ -8,14 +8,14 @@ import MaskedSecureInput from './MaskedSecureInput';
 
 describe('<MaskedSecureInput />', () => {
     it('should render', async () => {
-        render(<MaskedSecureInput format="'###-##-####" label="Label" />);
+        render(<MaskedSecureInput format="###-##-####" label="Label" />);
         const element = screen.getByLabelText('Label');
         expect(element).toBeInTheDocument();
         expect(element).toBeVisible();
     });
 
     it('should toggle the visiblity of the value when blurred and focused', async () => {
-        render(<MaskedSecureInput format="'###-##-####" label="Label" />);
+        render(<MaskedSecureInput format="###-##-####" label="Label" />);
         const element = screen.getByLabelText('Label');
         await userEvent.type(element, '123456789');
         await userEvent.click(document.body);
@@ -26,10 +26,10 @@ describe('<MaskedSecureInput />', () => {
 
     it('should output the unformatted value on change', async () => {
         const onChange = vi.fn();
-        render(<MaskedSecureInput format="'###-##-####" label="Label" onChange={onChange} />);
+        render(<MaskedSecureInput format="###-##-####" label="Label" onChange={onChange} />);
         const element = screen.getByLabelText('Label');
         await userEvent.type(element, '123456789');
-        expect(element).toHaveValue('(123-47-6789');
+        expect(element).toHaveValue('123-45-6789');
         expect(onChange).toHaveBeenCalled();
         expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ target: expect.objectContaining({ value: '123456789' }) }));
     });
@@ -47,7 +47,7 @@ describe('<MaskedSecureInput />', () => {
                     <Controller
                         control={control}
                         name="ssn"
-                        render={({ field }) => <MaskedSecureInput error={!!errors.ssn} format="'###-##-####" label="Label" {...field} />}
+                        render={({ field }) => <MaskedSecureInput error={!!errors.ssn} format="###-##-####" label="Label" {...field} />}
                         rules={{ required: true }}
                     />
                     <button type="submit">Submit</button>

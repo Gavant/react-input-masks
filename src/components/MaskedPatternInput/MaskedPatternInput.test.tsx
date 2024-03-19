@@ -74,7 +74,7 @@ describe('<MaskedPatternInput />', () => {
             await userEvent.type(element, '1234567890123456');
             await userEvent.click(screen.getByText('Submit'));
             expect(onSubmit).toHaveBeenCalledOnce();
-            expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ccNum: '1234 5678 9012 3456' }), expect.anything());
+            expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ccNum: '1234567890123456' }), expect.anything());
         });
     });
 });
