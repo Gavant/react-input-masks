@@ -9,6 +9,7 @@ import MaskedSecureInput from './MaskedSecureInput';
 describe('<MaskedSecureInput />', () => {
     it('should render', async () => {
         render(<MaskedSecureInput format="###-##-####" label="Label" />);
+
         const element = screen.getByLabelText('Label');
         expect(element).toBeInTheDocument();
         expect(element).toBeVisible();
@@ -16,6 +17,7 @@ describe('<MaskedSecureInput />', () => {
 
     it('should toggle the visiblity of the value when blurred and focused', async () => {
         render(<MaskedSecureInput format="###-##-####" label="Label" />);
+
         const element = screen.getByLabelText('Label');
         await userEvent.type(element, '123456789');
         await userEvent.click(document.body);
@@ -27,6 +29,7 @@ describe('<MaskedSecureInput />', () => {
     it('should output the unformatted value on change', async () => {
         const onChange = vi.fn();
         render(<MaskedSecureInput format="###-##-####" label="Label" onChange={onChange} />);
+
         const element = screen.getByLabelText('Label');
         await userEvent.type(element, '123456789');
         expect(element).toHaveValue('123-45-6789');
@@ -58,11 +61,12 @@ describe('<MaskedSecureInput />', () => {
         it('should have inter-op with useForm()', async () => {
             const onSubmit = vi.fn();
             render(<TestForm onSubmit={onSubmit} />);
+
             const element = screen.getByLabelText('Label');
             await userEvent.type(element, '123456789');
             await userEvent.click(screen.getByText('Submit'));
             expect(onSubmit).toHaveBeenCalledOnce();
-            expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ssn: '12345678' }), expect.anything());
+            expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ ssn: '123456789' }), expect.anything());
         });
     });
 });
