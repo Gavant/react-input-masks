@@ -1,7 +1,7 @@
 {
     "name": "@gavant/react-input-masks",
     "description": "Input mask components for React.js applications",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "repository": "https://github.com/Gavant/react-input-masks",
     "license": "MIT",
     "author": "Gavant Software, Inc.",
