@@ -77,8 +77,7 @@
             "publish": true
         },
         "git": {
-            "tagName": "v${version}",
-            "requireBranch": true
+            "tagName": "v${version}"
         },
         "github": {
             "release": true,
